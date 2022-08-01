@@ -1,0 +1,241 @@
+@import 'fonts';
+
+$fontFamily: "Rubik", sans-serif;
+$mainColor: #000;
+$secondaryColor: rgb(175, 175, 175);
+$iconsColor: rgb(215, 63, 253);
+
+$minWidth: 320px;
+$maxWidth: 1440;
+$maxWidthContainer: 1160;
+
+@import 'null';
+
+body {
+	position: relative;
+	font-size: 15px;
+	font-weight: 400;
+	color: $mainColor;
+}
+
+.container {
+	max-width: $maxWidthContainer + px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.search-form {
+	position: relative;
+	margin-top: 100px;
+
+	&__input {
+		width: 100%;
+		height: 50px;
+		padding: 10px 65px 10px 25px;
+		border: solid 1px rgb(245, 245, 245);
+		border-radius: 25px;
+		font-size: inherit;
+
+		&:focus {
+			border-color: $iconsColor;
+		}
+	}
+
+	&__icon {
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 25px;
+		cursor: pointer;
+		background-color: #fff;
+		background-image: url(../img/search.svg);
+	}
+}
+
+.users {
+	margin-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 25px;
+}
+
+.user {
+	width: 360px;
+	height: 240px;
+	padding: 20px;
+	box-shadow: 0 0 5px 10px rgb(240, 240, 240, 0.45);
+	border-radius: 10px;
+	cursor: pointer;
+	transition: box-shadow .3s ease;
+
+	&:hover {
+		box-shadow: 0 0 5px 10px rgb(215, 63, 253, 0.1);
+	}
+
+	&__name {
+		font-size: 18px;
+	}
+
+	&__contacts {
+		margin-top: 40px;
+	}
+
+	&__contact {
+		display: flex;
+		align-items: center;
+		color: $secondaryColor;
+
+		&:not(:last-child){
+			margin-bottom: 15px;
+		}
+	}
+
+	&__contact-tel {
+		&::before {
+			content: '';
+			width: 20px;
+			height: 20px;
+			background-image: url(../img/cell-phone-svgrepo-com.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: -3px center;
+			margin-right: 15px;
+		}
+	}
+
+	&__contact-link {
+		transition: color .3s ease;
+
+		&:hover {
+			color: $iconsColor;			
+		}
+	}
+
+	&__contact-mail {
+		text-decoration: underline;
+		&::before {
+			content: '';
+			width: 20px;
+			height: 20px;
+			background-image: url(../img/email-svgrepo-com.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			margin-right: 15px;
+		}
+	}
+}
+
+// POPUP
+
+.overlay {
+	display: none;
+	opacity: 0;
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+ 	left: 0;
+  	right: 0;
+  	background: rgba(0,0,0,0.5);
+}
+
+.show {
+	display: block;
+	opacity: 1;
+	visibility: visible;
+} 
+
+.cancel {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+}
+
+.popup {
+		width: 520px;
+		padding: 30px 15px;
+		background-color: #fff;
+		border-radius: 10px;
+		margin: 75px auto;
+		box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		position: relative;
+
+		&__user-name {
+			font-size: 20px;
+		}
+
+		&__info {
+			margin-top: 20px;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		&__additional-info {
+			margin-top: 20px;
+		}
+
+		&__close {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			top: -20px;
+			left: 50%;
+			transform: translateX(-50%);			
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background-color: $iconsColor;
+			cursor: pointer;
+			opacity: 1;
+			transition: opacity .3s ease;
+
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+
+		&__close-icon {
+			fill: #fff;
+		}
+}
+.info {
+
+		&__list {
+			&:not(:last-child) {
+				margin-right: 45px;
+			}
+		}
+
+		&__item {
+			&:not(:last-child) {
+				margin-bottom: 10px;
+			}
+		}
+
+		&__text {
+			color: $secondaryColor;
+			&:not(:last-child) {
+				margin-bottom: 10px;
+			}
+		}
+
+		&__link {
+		}
+}
+
+.additional-info {
+
+	&__title {
+		margin-bottom: 15px;
+	}
+
+	&__text {
+		color: $secondaryColor;
+	}
+}
+
